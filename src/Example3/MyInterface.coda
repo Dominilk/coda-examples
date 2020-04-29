@@ -1,0 +1,15 @@
+public interface MyInterface {
+	
+	/**
+	 * Says the given string.
+	 * <not implemented in this interface but in sub-class>
+	 */
+	public void say(string str)
+	
+	/**
+	 * Says "Hello!"
+	 */
+	public default void sayHello() {
+		this.say("Hello!");
+	}
+}

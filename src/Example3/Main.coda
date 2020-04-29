@@ -1,0 +1,27 @@
+public class Main implements MyInterface {
+	
+	/**
+	 * A std-out implementation of the function say in the super-interface.
+	 */
+	public void say(string msg) {
+		print(msg)
+	}
+	
+	/**
+	 * Runs the interface example
+	 */
+	public static void main() {
+		MyInterface i = new Main()
+				
+		i.sayHello()
+		
+		// Interface initialization.
+		
+		new MyInterface() {
+			
+			public void say(string message) print("Custom: " + message)
+			
+		}.sayHello()
+	}
+	
+}
