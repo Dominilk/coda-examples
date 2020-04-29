@@ -1,0 +1,10 @@
+import coda.lang.System
+
+/**
+ * Looks like java but is valid coda code.
+ */
+public class Test {
+	
+	public static void main() System.getConsole().writeLine("Hello world")	
+	
+}

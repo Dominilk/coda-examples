@@ -1,0 +1,3 @@
+import coda.lang.System
+
+System.getConsole().writeLine("Hello world")

@@ -1,0 +1,4 @@
+// Making use of the "as" keyword
+import coda.lang.System as sys
+
+sys.getConsole().writeLine("Hello world")
