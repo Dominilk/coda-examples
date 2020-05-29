@@ -1,0 +1,211 @@
+package at.dominik.ttt
+
+import coda.lang.System
+
+import coda.util.Random
+
+
+/*
+ * 
+ * INFO: Coda docs may look similar to java ones, but do not
+ * follow the standard java-doc conventions.
+ *
+ * This is a tick tack toe example written in the coda
+ * programming language.
+ */
+public class TickTackToe {
+
+    /**
+     * This is the array representing the playing
+     * field. The int is the player number. 
+     * 0 represents player X/cross and 1 would represent player O/circle.
+     */
+    private array<array<int>> playingField = null
+
+    /*
+     * Creates a tick-tack-toe game with the given field size.
+     * The field size is the amount of fields on one side.
+     *
+     * @param fieldSize
+     */
+    public TickTackToe(int fieldSize) {
+        this.playingField = array<int>[fieldSize]
+
+        /* 
+         * Since the current state of the array only contains null(s),
+         * we want to set the rows. (The current array represents 
+         * the collumns)
+        */
+
+        for(int i = 0, i < fieldSize, i += 1)this.getPlayingField().set(i, int[fieldSize])
+    }
+
+    /**
+     * Starts the game with the given player as starter. 
+     * The player needs to be 0 or 1.
+     * @param player            The starting player
+     */
+    public void startGame(int player) {
+        this.broadcastTurn(player)
+
+        var console = System.getConsole()
+
+        while(true) {
+            
+            while(!console.hasLine()) // Wait for a line.
+            
+            string line = console.readLine().replace("\n", "")
+
+            try {
+                array<string> location = line.split(":")
+
+                int collumn = location.get(0).toInteger()
+                int row = location.get(1).toInteger()
+                
+                if(this.getPlayingField().get(collumn).get(row) != null) {
+                    
+                    print("This field is already occupied!")
+
+                    continue
+                }
+
+                this.getPlayingField().get(collumn).set(row, player)
+
+                if(this.checkVictory(player, row, collumn)){
+                    print("-" * 60 + "\n")
+
+                    this.printField()
+
+                    if(player == 0)print("Player X won.")
+                    else print("Player O won.")
+
+                    break
+                }
+
+                // Still need to implement ? operator.
+                if(player == 0)player = 1
+                else player = 0
+                
+                this.broadcastTurn(player)
+
+                continue
+            } // We do not catch an exception here
+
+            print("This is not a valid location.")
+        }
+
+    }
+
+    /**
+     * @param player
+     * @param row
+     * @param collumn
+     * @return true if a player has won.
+     */
+    private boolean checkVictory(int player, int row, int collumn) {
+        var field = this.getPlayingField()
+        int side = this.getSide()
+
+        int vertical = 0
+        int horizontal = 0
+
+        for(int i = 0, i < side, i += 1) {
+            if(field.get(collumn).get(i) == player)vertical += 1
+            
+            if(field.get(i).get(row) == player)horizontal += 1
+        }
+    
+        int diagonalLeft = 0
+        int diagonalRight = 0
+
+        for(int i = 0, i < side, i += 1) {
+            if(field.get(i).get(i) == player)diagonalLeft += 1
+            
+            if(field.get(side - i - 1).get(i) == player)diagonalRight += 1
+        }
+
+        return vertical >= side | horizontal >= side | diagonalLeft >= side | diagonalRight >= side
+    }
+
+    /**
+     * Broadcasts that it is the given players turn now.
+     * The player needs to be 0 or 1.
+     * @param player
+     */
+    private void broadcastTurn(int player) {
+        assert player == 1 | player == 0
+
+        this.printField()
+
+        if(player == 0)print("It is Xs turn now.")
+        else if(player == 1)print("It is Os turn now.")
+    }
+
+    /**
+     * Prints the playing field into the std out.
+     */
+    public void printField() {
+        for(int i = 0, i <= this.getSide() * 2, i += 1) {
+            if(i % 2 != 0)this.printTickLine(i / 2)
+            else this.printBorderLine()
+        }
+    }
+
+    /**
+     * Prints a tick line of the field. (|  |  |)
+     * @param row
+     */
+    private void printTickLine(int row) {
+        
+        string line = ""
+
+        for(int i = 0, i <= this.getSide() * 2, i += 1) {
+            if(i % 2 == 0)line += "|"
+            else {
+                int collumn = i / 2
+
+                int field = this.getPlayingField().get(collumn).get(row)
+
+                // Bug check else-if statements & copy item when putting array and more copy
+
+                if(field == 0)line += "X"
+                else if(field == 1)line += "O"
+                else{
+                    line += " "
+                }
+            }
+        }
+
+        print(line)
+    }
+    
+    /**
+     * Prints a border line of the filed (+------+)
+     */
+    private void printBorderLine() print("+" + this.getSide() * "-+")
+
+    /**
+     * Returns the length of the side of playing field
+     */
+    public int getSide() return this.getPlayingField().getLength()
+
+    /**
+     * Returns the playing field.
+     */
+    public array<array<int>> getPlayingField() return this.playingField
+
+    /**
+     * Starts the tick tack toe example.
+     */
+    public static void main() {
+        TickTackToe ttt = new TickTackToe(3)
+
+        print("Welcome to coda tick-tack-toe!")
+        print("You can set a mark by typing COLLUMN:ROW and hitting enter.")
+        print("-" * 60 + "\n")
+        
+        ttt.startGame(Random.simple(0, 2))
+        
+    }
+
+}
