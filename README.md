@@ -10,3 +10,5 @@ This repository contains some example projects written in the coda programming l
 | 2             | Password Gen  |
 | 3             | Interfaces    |
 | 4             | TickTackToe   |
+| 5             | Fibonacci     |
+| 6             | Generics      |

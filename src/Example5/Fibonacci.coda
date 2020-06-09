@@ -1,0 +1,13 @@
+public static void fib(int max) {
+	int a = 0
+	int b = 1
+	
+	while(a < max) {
+		print(a)
+		int temp = a
+		a = b
+		b = temp + b
+	}
+}
+
+fib(10)
