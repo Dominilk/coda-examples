@@ -12,3 +12,4 @@ This repository contains some example projects written in the coda programming l
 | 4             | TickTackToe   |
 | 5             | Fibonacci     |
 | 6             | Generics      |
+| 7             | Brainfuck Interpreter |
