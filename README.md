@@ -1,6 +1,6 @@
 # coda-examples
 This repository contains some example projects written in the coda programming language
-> NOTE: Coda is my own programming language and I am thinking of releasing it to the public.
+> NOTE: Coda is my own programming language, you can get it here: https://fine-lang.com
 
 ## Examples
 
@@ -12,4 +12,4 @@ This repository contains some example projects written in the coda programming l
 | 4             | TickTackToe   |
 | 5             | Fibonacci     |
 | 6             | Generics      |
-| 7             | Brainfuck Interpreter |
+| 7             | Brainf*ck Interpreter |

@@ -49,6 +49,8 @@ public class Brainfuck {
 			
 			char instruction = this.getInstructions().get(i)
 			
+			// Could have also used switch block.
+					
 			if(instruction == '>') {
 				this.incrementCellPointer()
 			}else if(instruction == '<') {

@@ -1,2 +1,2 @@
 # Brainf*ck
-This example an implementation of the Brainf*ck programming language.
+This is an implementation of the Brainf*ck programming language.
