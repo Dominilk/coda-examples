@@ -1,6 +1,6 @@
 # coda-examples
 This repository contains some example projects written in the coda programming language
-> NOTE: Coda is my own programming language, you can get it here: https://fine-lang.com
+> NOTE: Coda is my own programming language, you can get it here: https://coda-lang.dev
 
 ## Examples
 
