@@ -1,3 +1,5 @@
+# DISCLAIMER
+These are examples for the old Java version. Not the new rust implementation! (These versions are incompatible)
 # coda-examples
 This repository contains some example projects written in the coda programming language
 > NOTE: Coda is my own programming language, you can get it here: https://coda-lang.dev
